@@ -1,0 +1,19 @@
+{% extends 'magic_admin/base_magic.html' %}
+{% block title %}Creature List{% endblock title %}
+{% block content %}
+    <h2>Magical Creatures</h2>
+    {% if creature_list %}
+        <ul>
+            {% for creature in creature_list %}
+                <li>
+                    <div class="creature">
+                        <a href="{% url 'magic_admin:creature_detail' creature.pk %}">
+                            <h3>{{ creature.name }}</h3>
+                        </a>
+                        <p>{{ creature.species }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock content %}

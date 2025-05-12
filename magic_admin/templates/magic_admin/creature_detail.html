@@ -1,0 +1,13 @@
+{% extends 'magic_admin/base_magic.html' %}
+{% block title %}{{ creature.name }}{% endblock title %}
+{% block content %}
+    <p>Name: {{ creature.name }}</p>
+    <p>Species: {{ creature.species }}</p>
+    <p>Arrival Date: {{ creature.date_arrived }}</p>
+    <p>Temperament: {{ creature.temperament }}</p>
+    <p>Nocturnal: {{ creature.is_nocturnal }}</p>
+    <p>Primary Keeper: {{ creature.primary_keeper.name }}</p>
+    <p>Habitat: {{ creature.habitat.name }}</p>
+    <p>Special Abilities: {{ creature.special_abilities }}</p>
+    <p><a href="{% url 'magic_admin:creature_list' %}">Return to List</a></p>
+{% endblock content %}
