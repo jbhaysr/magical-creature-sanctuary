@@ -4,6 +4,17 @@
         <title>{% block title %}Magic Admin{% endblock title %}</title>
     </head>
     <body>
+        {# if this is a comment it shouldn't end up in inspect element #}
+        {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}.</p>
+        <form method="post" action="{% url 'account_logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        {% else %}
+            <a href="{% url 'account_login' %}">Login</a>
+            <a href="{% url 'account_signup' %}">Sign Up</a>
+        {% endif %}
         {% block content %}
         {% endblock content %}
     </body>

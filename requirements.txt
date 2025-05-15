@@ -1,0 +1,11 @@
+asgiref==3.8.1
+astroid==3.3.9
+dill==0.4.0
+Django==5.2.1
+django-allauth==65.8.0
+isort==6.0.1
+mccabe==0.7.0
+platformdirs==4.3.7
+pylint==3.3.7
+sqlparse==0.5.3
+tomlkit==0.13.2
