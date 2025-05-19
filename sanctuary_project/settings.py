@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
+
+    'rest_framework',
 ]
 
 SITE_ID = 1

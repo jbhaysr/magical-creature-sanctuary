@@ -34,6 +34,8 @@ class Creature(models.Model):
     habitat = models.ForeignKey(Habitat, on_delete=models.PROTECT)
     special_abilities = models.ManyToManyField(SpecialAbility, through='CreatureAbility')
 
+    owners = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     def __str__(self):
         return f"{self.name}"
 

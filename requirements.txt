@@ -3,6 +3,7 @@ astroid==3.3.9
 dill==0.4.0
 Django==5.2.1
 django-allauth==65.8.0
+djangorestframework==3.16.0
 isort==6.0.1
 mccabe==0.7.0
 platformdirs==4.3.7
