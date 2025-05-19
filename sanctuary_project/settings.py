@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
 
     'rest_framework',
+    'django_filters',
 ]
 
 SITE_ID = 1
@@ -65,6 +66,21 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'sanctuary_project.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',      # Optional: for text search
+        'rest_framework.filters.OrderingFilter',    # Optional: for ordering results
+    ],
+    # Pagination settings will be added in the next step
+}
 
 TEMPLATES = [
     {

@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Keeper(models.Model):
     name = models.CharField(max_length=100)
@@ -34,7 +35,11 @@ class Creature(models.Model):
     habitat = models.ForeignKey(Habitat, on_delete=models.PROTECT)
     special_abilities = models.ManyToManyField(SpecialAbility, through='CreatureAbility')
 
-    owners = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='%(class)s_items' # Example: yourchosenmodel_items
+    )
 
     def __str__(self):
         return f"{self.name}"
