@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, ListView
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .models import Creature
 from .serializers import CreatureSerializer
+from .permissions import IsOwnerOrReadOnly
 
 class CreatureListView(ListView):
     model = Creature
@@ -21,7 +22,7 @@ class CreatureViewSet(viewsets.ModelViewSet):
     # For django-filter exact matches (e.g., ?field_name=value or ?owner__username=johndoe)
     filterset_fields = ['name', 'owner__username'] # Choose 1-2 relevant fields from your model
                                                     # For ForeignKeys, you can filter by related model fields like 'owner__username'
-
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
     # For SearchFilter (e.g., ?search=keyword)
     search_fields = ['name', 'species'] # Choose text-based fields from your model
 

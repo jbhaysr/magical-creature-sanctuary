@@ -80,6 +80,8 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',    # Optional: for ordering results
     ],
     # Pagination settings will be added in the next step
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5
 }
 
 TEMPLATES = [
